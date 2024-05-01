@@ -27,6 +27,8 @@ const searchSong = async (searchTermArr) => {
   }
 };
 
+// Comment
+
 // Event Listeners
 form.addEventListener("submit", (e) => {
   e.preventDefault();
