@@ -7,7 +7,12 @@ const apiURL = "https://api.lyrics.ovh/v1";
 
 // Display lyrics to DOM
 const showData = (data) => {
-  console.log(data);
+  const songLyricsArr = data.lyrics.split("\n");
+  songLyricsArr.forEach((songLyricLine) => {
+    const lyricLine = document.createElement("p");
+    lyricLine.innerText = songLyricLine;
+    result.appendChild(lyricLine);
+  });
 };
 
 // Search for song from API
@@ -23,11 +28,12 @@ const searchSong = async (searchTermArr) => {
   if (data) {
     if (data.error) {
       result.innerHTML = data.error;
-    } else showData(data);
+    } else {
+      result.innerHTML = "";
+      showData(data);
+    }
   }
 };
-
-// Comment
 
 // Event Listeners
 form.addEventListener("submit", (e) => {
